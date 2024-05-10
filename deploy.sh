@@ -1,6 +1,6 @@
 #!/bin/bash
 
-repo_folder="/home/ravikishans/CICDPipeline-html"
+repo_folder="repo"
 
 if [ -d "$repo_folder" ]; then
     echo "Repository folder exists."
