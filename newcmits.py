@@ -54,7 +54,7 @@ if os.path.exists(destination_dir):
 subprocess.run(["git", "clone", repo_url, destination_dir])
 print("Cloned repo")
 
-subprocess.run(["bash", "deployment.sh"])
+subprocess.run(["bash", "deploy.sh"])
 
 commit_hash_file = open("commit_hash.txt", "w")
 commit_hash_file.write(latest_commit_sha)
