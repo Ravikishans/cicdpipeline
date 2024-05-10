@@ -26,7 +26,7 @@ else:
 g = Github(auth=auth)
 repo_name = "ravikishans/CICDPipeline-html"
 repo = g.get_repo(repo_name)
-
+print(repo)
 latest_commit = repo.get_commits()[0]
 
 latest_commit_sha = latest_commit.sha
