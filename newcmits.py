@@ -4,12 +4,12 @@ import subprocess
 import shutil
 
 
-#G_TOKEN = os.getenv('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')
+# G_TOKEN = os.getenv('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')
 G_TOKEN = "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"
-
+Token=os.getenv(G_TOKEN)
+print(Token)
 # print("G_TOKEN:", G_TOKEN)
 # print("Type of G_TOKEN:", type(G_TOKEN))
-
 # auth = Auth.Token(G_TOKEN)
 
 # if isinstance(G_TOKEN, str):
@@ -18,9 +18,9 @@ G_TOKEN = "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"
 #     print("Error: G_TOKEN is not a valid string.")
 
 if G_TOKEN is not None:
-    auth = Auth.Token(G_TOKEN)
+   auth = Auth.Token(G_TOKEN)
 else:
-    print("Error: G_TOKEN is None. Please set a valid GitHub token.")
+   print("Error: G_TOKEN is None. Please set a valid GitHub token.")
 
 
 g = Github(auth=auth)
