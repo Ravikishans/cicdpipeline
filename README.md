@@ -1,15 +1,34 @@
-crontask.sh: A shell script that is run periodically using cron.
-deploy.sh: A shell script for deploying the project.
-newcmits.py: The main Python script for the project.
+Building CI-CD Pipeline Tool
 
+Task1:
 
-Setup--
+index.html is created at ~/CICDPipeline-html/index.html
 
-Clone the repository.
-Replace the placeholder GitHub token in newcmits.py with your actual GitHub token. Alternatively, you can set your GitHub token as an environment variable in your shell.
-Modify the repo_name variable in newcmits.py to match the name of the repository you want to work with.
-Run crontask.sh to run the script. You can also add it to your crontab using crontab -e to run it periodically.
+Task2:
 
-Running the project
+Install NGINX
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install nginx
+sudo service nginx status --> active(running)
 
-After setting up the project, you can run it using the crontask.sh script.
+Task3:
+
+Python Script to Check for New Commits
+newcmits.py for tracking the new commits made in Github using the GitHub API
+
+Task4:
+
+Bash Script to Deploy the Code
+deploy.sh --> bash file to copy the latest index.html from github repo to the nginx /var/www/html/index.html to deploy the changes to production
+
+Task5:
+
+Cron Job to Run the Python Script
+crontab -e
+/usr/bin/bash /home/ubuntu/cicdpipeline/crontask.sh >> /home/ubuntu/cicdpipeline/py_log.txt 2>&1
+Enter the above line in "crontab -e" to keep track if any changes has been pushed to github every minute. The details log of the python file will be logged to py_log.txt
+
+Task6:
+
+Push a change to index.html and this should trigger the python file to track the changes and deploy the changes in nginx server to see it in production.
