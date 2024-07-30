@@ -1,34 +1,54 @@
-Building CI-CD Pipeline Tool
+# CI-CD Pipeline Tool
 
-Task1:
+## Introduction
 
-index.html is created at ~/CICDPipeline-html/index.html
+This repository provides a step-by-step guide to setting up a CI-CD pipeline tool. The tool will automate the process of checking for new commits, deploying code to an NGINX server, and ensuring changes are reflected in production.
 
-Task2:
+## Task 1: Create index.html
 
-Install NGINX
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install nginx
-sudo service nginx status --> active(running)
+Create the `index.html` file at the following location:
+```
+~/CICDPipeline-html/index.html
+```
 
-Task3:
+## Task 2: Install NGINX
 
-Python Script to Check for New Commits
-newcmits.py for tracking the new commits made in Github using the GitHub API
+1. Update and upgrade your package lists:
+    ```sh
+    sudo apt-get update
+    sudo apt-get upgrade
+    ```
+2. Install NGINX:
+    ```sh
+    sudo apt-get install nginx
+    ```
+3. Check the status of NGINX to ensure it's running:
+    ```sh
+    sudo service nginx status
+    ```
+   The status should be `active (running)`.
 
-Task4:
+## Task 3: Python Script to Check for New Commits
 
-Bash Script to Deploy the Code
-deploy.sh --> bash file to copy the latest index.html from github repo to the nginx /var/www/html/index.html to deploy the changes to production
+The `newcmits.py` script tracks new commits made in a GitHub repository using the GitHub API.
 
-Task5:
+## Task 4: Bash Script to Deploy the Code
 
-Cron Job to Run the Python Script
-crontab -e
-/usr/bin/bash /home/ubuntu/cicdpipeline/crontask.sh >> /home/ubuntu/cicdpipeline/py_log.txt 2>&1
-Enter the above line in "crontab -e" to keep track if any changes has been pushed to github every minute. The details log of the python file will be logged to py_log.txt
+The `deploy.sh` script copies the latest `index.html` file from the GitHub repository to the NGINX server's web directory to deploy changes to production.
 
-Task6:
+## Task 5: Cron Job to Run the Python Script
 
-Push a change to index.html and this should trigger the python file to track the changes and deploy the changes in nginx server to see it in production.
+To run the Python script periodically, set up a cron job:
+
+1. Open the crontab editor:
+    ```sh
+    crontab -e
+    ```
+2. Add the following line to execute `crontask.sh` every minute and log the output to `py_log.txt`:
+    ```sh
+    * * * * * /usr/bin/bash /home/ubuntu/cicdpipeline/crontask.sh >> /home/ubuntu/cicdpipeline/py_log.txt 2>&1
+    ```
+
+## Task 6: Push a Change to index.html
+
+Push a change to `index.html`. This action should trigger the Python script to track the changes and deploy the updated `index.html` to the NGINX server, reflecting the changes in production.
