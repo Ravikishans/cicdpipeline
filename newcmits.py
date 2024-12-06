@@ -2,7 +2,7 @@ from github import Github,Auth
 import os
 import subprocess
 import shutil
-G_TOKEN=os.getenv("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")
+G_TOKEN=os.getenv(".....")
 if not G_TOKEN:
     print("Error: GitHub token not found. Set the GITHUB_TOKEN environment variable.")
     exit(1)
